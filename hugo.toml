@@ -4,5 +4,13 @@ title = "My Blog"
 theme = "ananke"
 
 [params]
+  [params.author]
+    name = "StaticPress User"
+    bio = "Writer"
   author = "StaticPress User"
   description = "A blog created with StaticPress"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
