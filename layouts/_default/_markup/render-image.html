@@ -1,6 +1,8 @@
-{{- $u := .Destination -}}
-{{- $isRemote := or (hasPrefix $u "http") (hasPrefix $u "//") -}}
-{{- if not $isRemote -}}
-  {{- $u = $u | absURL -}}
+{{- $u := urls.Parse .Destination -}}
+{{- $isRemote := or (strings.HasPrefix .Destination "http://") (strings.HasPrefix .Destination "https://") (strings.HasPrefix .Destination "//") -}}
+{{- if $isRemote -}}
+  {{- $u = .Destination -}}
+{{- else -}}
+  {{- $u = .Destination | absURL | safeURL -}}
 {{- end -}}
-<img src="{{ $u }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
+<img src="{{ $u }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" />
