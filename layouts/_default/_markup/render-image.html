@@ -1,0 +1,6 @@
+{{- $u := .Destination -}}
+{{- $isRemote := or (hasPrefix $u "http") (hasPrefix $u "//") -}}
+{{- if not $isRemote -}}
+  {{- $u = $u | absURL -}}
+{{- end -}}
+<img src="{{ $u }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
