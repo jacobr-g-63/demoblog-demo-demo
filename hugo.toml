@@ -1,7 +1,7 @@
 baseURL = "https://example.org/"
 languageCode = "en-us"
 title = "My Blog"
-theme = "poison"
+theme = "terminal"
 
 [params]
   author = "StaticPress User"
